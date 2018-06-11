@@ -1,0 +1,181 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="/static/imgs/sdjjico.jpg">
+	<title>闪电降价发布系统</title>
+	<!-- Bootstrap core CSS -->
+	<link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+   	 <!-- Custom styles for this template -->
+ 	<link href="/static/css/dashboard.css" rel="stylesheet">
+	<!--框架样式-->
+	<link href="/static/css/home.css" rel="stylesheet">
+	<!--小屏下，右移样式-->
+	<link href="/static/css/offcanvas.css" rel="stylesheet">
+	<!--项目管理（非框架）样式-->
+	<link href="/static/css/projectmanegement.css" rel="stylesheet">
+    	<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    	<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]
+    	<script src="../../assets/js/ie-emulation-modes-warning.js"></script>-->
+
+    	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+   	<!--[if lt IE 9]>
+      	<script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.js"></script>
+      	<script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    	<![endif]-->
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div class="row row-offcanvas row-offcanvas-left">
+			<div class="col-xs-6 col-sm-1  col-md-2 sidebar-offcanvas homedivtm" id="sidebar" role="navigation">
+				<!--左导航-->
+				{% include 'left_nav.html' %}
+
+			</div><!--col-sm-3 col-md-2 sidebar -->	     
+			<div class="col-xs-12 col-sm-12  col-md-12 home-brand">
+				<!--head-->
+				{% include 'header_nav.html' %}
+			</div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-1 main">
+				<div class="col-xs-12 col-sm-12 container" role="navigation">
+                                        <p class="pull-left visible-xs">
+                                                 <button type="button" class="btn btn-info btn-md" data-toggle="offcanvas">菜单</button>
+                                        </p>
+				</div>
+			<!--框架主页开始-->
+				<table>
+                    {% csrf_token %}
+					<tr>
+						<td>
+						<div class='col-md-12'>
+							<a href="/setting/adduser/" class="btn btn-sm btn-primary btn-block" >添加用户</a>
+						</div>
+						</td>
+					</tr>
+				</table>
+				
+				<div class='col-lg-12'>
+				<table class="table table-bordered table-hover promane_tab promane_fy2 table-condensed">
+					<thead>
+					<tr class="info">
+							<th scope="col" colspan="11">用户信息</th>
+					</tr>
+
+					<tr class="promane_trttop">
+						<th scope="col">登陆名</th>
+						<th scope="col">中文名</th>
+						<th scope="col">用户身份</th>
+						<th scope="col">可管理项目</th>
+						<th scope="col">邮箱</th>
+						<th scope="col">创建时间</th>
+						<th scope="col">最后登陆时间</th>
+						<th scope="col" colspan="3">操作</th>
+					</tr>
+					</thead>
+					<tbody>
+						{% for sto_row in user_data %}<!--根据分页数据表列表沥遍，获得两个元组 -->
+							<tr class="info">
+								<td>{{ sto_row.username }}</td>
+								<td>{{ sto_row.last_name }}</td>
+                                <td>{{ sto_row.id }}</td>
+								<td>{{ sto_row.is_staff }}</td>
+								<td>
+									{% for project_name in sto_row.project_name %}
+										{{ project_name.0 }} <br>
+									{% endfor %}
+								</td>
+								<td>{{ sto_row.email }}</td>
+								<td>{{ sto_row.date_joined }}</td>
+								<td>{{ sto_row.last_login }}</td>
+								<!--<td scope="col" colspan="1" style="text-align:right;vertical-align:middle;padding-right:10%;">-->
+								<td scope="col" colspan="1" style="text-align:right;vertical-align:middle;">
+										{% if sto_row.duty %}
+											<button  type="button"
+												class="{{sto_row.duty_css}}"
+												>请假
+											</button>
+										{% endif %}
+										<a href="javascript:void(0)" type="button" class="btn btn-default btn-sm EditUser" user-id={{ sto_row.id }}>
+												<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
+										</a>
+										<a href="javascript:void(0)" type="button" class="btn btn-default btn-sm EditPassword" user-id={{ sto_row.id }}>
+												<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>改密
+										</a>
+										<a href="javascript:void(0)" type="button" class="btn btn-danger btn-sm DeleteUser " user-id={{ sto_row.id }} user-name={{ sto_row.last_name}} >
+												<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
+										</a>
+								</td>
+							</tr><!--info-->
+						{% endfor %}
+					</tbody>
+				</table>
+				</div>
+			
+			<!--框架主页结束-->
+			</div><!--col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main -->
+		</div><!--row row-offcanvas row-offcanvas-left--> 
+	</div><!--container-fluid -->
+
+	<!-- Bootstrap core JavaScript
+	================================================== -->
+			<!--框架主页结束-->
+			</div><!--col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main -->
+		</div><!--row row-offcanvas row-offcanvas-left--> 
+	</div><!--container-fluid -->
+
+	<!-- Bootstrap core JavaScript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="/static/js/1.11.1/jquery.min.js"></script>
+	<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<script src="/static/js/ie10-viewport-bug-workaround.js"></script>
+	<!--小屏下，右移效果-->
+	<script src="/static/js/offcanvas.js"></script>
+	<!--删除数据弹窗警告-->
+	<script src="/static/js/setting.js"></script>
+	<script type="text/javascript">
+    $.ajaxSetup({
+        data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
+    });
+    $(function (){
+        var  name = $("input").attr("name")
+        var  value = $("input").attr("value")
+        $("table tbody tr").find('td:eq(2)').hide();
+        $("table tbody tr").find('td:last').find('button:first').click(function () {
+        //$(this).attr("class", "btn btn-sm btn-secondary-outline")
+        Tid0 = $(this).parents('td').siblings('td').eq(0).text();
+        Tid1 = $(this).parents('td').siblings('td').eq(1).text();
+        Tid2 = $(this).parents('td').siblings('td').eq(2).text();
+        Tidclass = $(this).attr("class")
+        //console.log("ok")
+        //console.log(name,value,Tid0,Tid1,Tid2,Tidclass)
+        if (Tidclass == "btn btn-sm btn-success btn-primary"){
+            operation = 1;
+            }else {
+            operation = 0;
+            };
+                 jQuery.ajax({
+                    url: '/setting/editduty/',
+                    async: false,
+                    type: 'post',
+                    data: {name:name,value:value, userid:Tid2, operation:Tid1},
+                    success: function (arg) {
+                        if (arg) {
+                             //console.log(arg)
+                              window.location.href=window.location.href
+                        }
+            }
+            })
+
+        })
+    })
+</script>
+</body>
+</html>
+

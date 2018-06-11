@@ -1,0 +1,27 @@
+listrequest{
+padding-top:60px;
+padding-bottom:32px;
+}
+
+.listrequest_tab {
+text-align: center;
+}
+
+.listrequest_trtop{
+background:#66a9bd;
+}
+
+.listrequest_trttop th{
+background:#66a9bd;
+text-align: center;
+}
+
+
+.listrequest_fy {
+text-align: right;
+}
+
+.listrequest_fy1 {
+text-align: left;
+}
+
