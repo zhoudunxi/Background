@@ -1,0 +1,70 @@
+<html lang="zh-CN">
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="/static/imgs/sdjjico.jpg">
+        <title>闪电降价发布系统</title>
+        <!-- Bootstrap core CSS -->
+        <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+        <!--login样式-->
+        <link href="/static/css/login.css" rel="stylesheet">
+        <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+        <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]
+        <script src="../../assets/js/ie-emulation-modes-warning.js"></script>-->
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+</head>
+
+<body>
+	<div class="loginbak"> 
+                <div class="logincenter">
+                        <div class="container-fluid">
+                                <div class="row">
+                                        <div class="col-xs-12 col-sm-push-4 col-sm-6 col-sm-push-3 col-md-4 col-md-push-4 col-lg-2 col-lg-push-5 logindivtm">
+							{% if form_login.errors %}
+								<p style="color:FF99FF;font-size:18px;"> 请检查你的输入！ {{ form.errors }} </p>
+							{% endif %}
+							{% if autherror %}
+								<p style="color:FF99FF;font-size:18px;"> {{ autherror }}</p>
+							{% endif %}
+
+
+                                                        <form action="/login/" method="post" class="" role="form">
+							{% csrf_token %}
+							<input type='hidden' name=nextpath value='{{ nextpath }}'>
+                                                        <table class="col-lg-12 col-xs-12  col-sm-6  col-md-12">
+                                                                <tr>
+                                                                        <td><h2 class="text-primary loginh2">闪电降价-发布</h2></td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td class='loginspan'><span class="glyphicon glyphicon-user">请输入用户名</span></td>
+                                                                </tr>
+								<tr>
+                                                                        <td>{{ form_login.username }}</td>
+								</tr>
+                                                                <tr>
+                                                                        <td class='loginspan'><span class="glyphicon glyphicon-lock">输入你的密码</span></td>
+                                                                </tr>
+								<tr>
+                                                                        <td>{{ form_login.password }}</td>
+								</tr>
+                                                                <tr>
+                                                                        <td><button class="btn btn-lg btn-primary btn-block" type="submit">登录</button></td>
+                                                                </tr>
+                                                         </table>
+                                                        </form>
+                                        </div> <!--col-xc-->
+                                </div><!--row -->
+                        </div> <!--container-full-->
+                </div><!-- logincenter-->
+        </div><!-- loginbak-->
+</body>
+</html>

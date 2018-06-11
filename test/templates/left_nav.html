@@ -1,0 +1,14 @@
+					<ul class="nav nav-sidebar">
+						<li class=""><img src="/static/imgs/logo.jpg" class="img-responsive center-block" alt="logo image"></li>
+						{% for left_nav_list in left_nav %}
+							<li class={{left_nav_list.3}}><a  class="homea" href={{left_nav_list.2}}>{{left_nav_list.1}}</a></li>
+						{% endfor %}
+					</ul>
+                            <script src="/static/js/1.11.1/jquery.min.js"></script>
+                            <script src="/static/js/menu.js"></script>
+                            <>
+                            <script>
+                             $(function(){
+                                peizhi()
+                             })
+                            </script>

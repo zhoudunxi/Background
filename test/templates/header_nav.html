@@ -1,0 +1,37 @@
+<nav class="navbar navbar-default homehead_nav">
+  <div class="container-fluid">
+    <div class="navbar-collapse collapse">
+	 		<div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                </button>
+                                <b class="home-brand" href="#">闪电运维 发布系统</b>
+                        </div><!--navber-header -->
+	<ul class="nav navbar-nav navbar-right">
+			<li>
+				<div class="homeprofile-box" >
+					<span class="homeprofile" style="padding:4 4 0 0">
+							<img class="homeimage" src="/static/imgs/gogo.jpg" alt="imagtouxiang" width="26" height="26" />
+							{% if user.is_authenticated %}
+								<span class="hometext-box">
+									欢迎您
+									<strong class="homename">{{ user.last_name }}</strong>
+								</span>
+							{% else %}
+								<span class="hometext-box">
+									<a href='/login/' class="homename-a">请登陆</a>
+								</span>
+							{% endif %}
+						</a>
+					</span>
+				</div>
+			</li>
+			<li><a class="" style="padding:14 0 0 10" href="/setting/editpassword/?edituserid={{ user.id }}">改密</a></li>
+			<li><a class="" href="/logout/">登出</a></li>
+        </ul>
+    </div>
+  </div>
+</nav>

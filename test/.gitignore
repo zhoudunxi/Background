@@ -1,0 +1,12 @@
+manage.py
+settings.py
+release_sdjj/testenv_settings.py
+release_sdjj/online_settings.py
+*.pyc
+runtime/
+apkbuild/configs/BuildApk.conf
+.idea/
+.vscode/
+logs/
+public/configs/public.conf
+public/configs/uwsgi.ini

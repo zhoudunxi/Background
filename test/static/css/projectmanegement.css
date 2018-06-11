@@ -1,0 +1,27 @@
+.promane{
+padding-top:60px;
+padding-bottom:32px;
+}
+
+.promane_tab {
+text-align: center;
+}
+
+.promane_trtop{
+background:#66a9bd;
+}
+
+.promane_trttop th{
+background:#66a9bd;
+text-align: center;
+}
+
+
+.promane_fy {
+text-align: right;
+}
+
+.promane_fy1 {
+text-align: left;
+}
+
